@@ -4,7 +4,6 @@ const store = require('../store')
 // const productEvents = require('../product/events')
 
 const onSignInSuccess = response => {
-  console.log('user', response.user)
   // if (response.user.admin) {
   //   $('#user-message').html(`<a class='btn btn-success'>welcome admin ${response.user.email}</a>`)
   //   $('#seed').html(showSeedButtonTemplate)
@@ -14,6 +13,8 @@ const onSignInSuccess = response => {
   store.user = response.user
   // reload product listing with "Add to Cart" buttons on successful sign in
   // productEvents.onGetProducts()
+  $('#login-card').hide()
+  $('#dashboard').show()
 }
 
 const onSignUpSuccess = response => {
@@ -23,23 +24,11 @@ const onSignUpSuccess = response => {
 
 const onSignOutSuccess = response => {
   $('#user-message').html('<a class="btn btn-success">Sign out success</a>')
-  $('#seed').html('')
   store.user = null
   store.cart = null
   store.Sum = null
-  // reload product listing with "Sign in to Add to Cart" message on sign out
-  productEvents.onGetProducts()
-  $('.change-password').hide()
-  $('.sign-out').hide()
-  $('.view-cart').hide()
-  $('.sign-in').show()
-  $('.sign-up').show()
-  $('.checkout').hide()
-  $('#cart').hide()
-  $('#orders').hide()
-  $('.index-orders').hide()
-  $('#sidebar').hide()
-  $('#products').show()
+  $('#login-card').show()
+  $('#dashboard').hide()
 }
 
 const onChangePasswordSuccess = response => {
