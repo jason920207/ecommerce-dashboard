@@ -5,7 +5,14 @@
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
-
+const authenticationEvents = require('./auth/events')
+// const productEvents = require('./product/events')
+// const cartEvents = require('./cart/events')
+// const orderEvents = require('./order/events')
 $(() => {
   // your JS code goes here
+  authenticationEvents.addAuthEventHandlers()
+  // productEvents.addProductEventHandlers()
+  // cartEvents.addCartEventHandlers()
+  // orderEvents.addOrderEventHandlers()
 })
